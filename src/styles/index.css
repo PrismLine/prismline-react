@@ -1,0 +1,290 @@
+/* Global CSS entry — imports existing PrismLine stylesheets */
+@import url('/assets/css/style.css');
+@import url('/assets/css/intro.css');
+
+/* =========================================================================
+   SCROLL ENGINE & HEADER STACKING
+   ========================================================================= */
+
+html, body {
+  scroll-behavior: auto !important; /* Lenis handles smooth scrolling */
+}
+
+/* Header always above content in z-stack */
+.site-header, .navbar {
+  z-index: 1000 !important;
+}
+
+/* React SPA — page transition body class */
+body.page-is-transitioning {
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+body.js-ready {
+  opacity: 1;
+  transition: opacity 0.22s ease;
+}
+
+#root {
+  opacity: 1;
+}
+
+/* =========================================================================
+   ITI.CA-STYLE EDITORIAL ANIMATION SYSTEM
+   - Frictionless continuous scroll (no locking pins that trap the user)
+   - Horizontal parallax drift typography
+   - Multi-layer visual parallax depth
+   - Masked text / line reveals
+   - Floating geometric accents (+, —, square badges)
+   ========================================================================= */
+
+/* Editorial Story Section — Fluid, Non-Sticking Flow */
+.editorial-story-section {
+  background: #F8F7F3;
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 7rem;
+}
+
+/* Floating Geometric Accent Shapes (iti.ca signature) */
+.iti-floating-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.iti-shape-plus {
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--brand-crimson, #D50000);
+  opacity: 0.85;
+}
+
+.iti-shape-plus.shape-sunset {
+  color: var(--brand-sunset, #FF5722);
+}
+
+.iti-shape-plus.shape-large {
+  font-size: 3.8rem;
+}
+
+.iti-shape-dash {
+  width: 48px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #FF5722, #D50000);
+  opacity: 0.8;
+}
+
+.iti-shape-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: #FF5722;
+  opacity: 0.75;
+}
+
+.iti-shape-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Horizontal Drift Typography Banner (iti.ca signature) */
+.iti-drift-banner {
+  position: relative;
+  padding: 3rem 0 4.5rem;
+  overflow: hidden;
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  margin-bottom: 4.5rem;
+  background: linear-gradient(180deg, rgba(248, 247, 243, 0.5) 0%, rgba(241, 245, 249, 0.8) 100%);
+}
+
+.iti-drift-row {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  white-space: nowrap;
+  will-change: transform;
+  user-select: none;
+  margin: 0.4rem 0;
+}
+
+.iti-drift-row.drift-left {
+  transform: translate3d(0, 0, 0);
+}
+
+.iti-drift-row.drift-right {
+  transform: translate3d(0, 0, 0);
+}
+
+.iti-drift-word {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #0F172A;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iti-drift-word.word-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(15, 23, 42, 0.22);
+}
+
+.iti-drift-word.word-accent {
+  background: linear-gradient(135deg, #D50000 0%, #FF5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.iti-drift-divider {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand-crimson, #D50000);
+  opacity: 0.5;
+}
+
+/* Service Blocks — Clean continuous layout with no sticky lock */
+.editorial-story-block {
+  position: relative;
+  padding: 4.5rem 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.editorial-story-block:last-child {
+  border-bottom: none;
+}
+
+.story-sticky-stage {
+  position: relative;
+  width: 100%;
+}
+
+/* Masked Line & Word Reveals (iti.ca .u-overflow > .u-anim.-translate) */
+.u-mask-reveal {
+  overflow: hidden;
+  display: block;
+}
+
+.u-mask-inner {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.u-mask-inner.is-revealed {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Multi-layer Parallax Stages */
+.story-visual-stage {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.15s ease-out;
+}
+
+.code-visual-canvas {
+  box-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.9);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.code-visual-canvas:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(203, 213, 225, 1);
+}
+
+/* iti.ca-Style Interactive Pill Button */
+.iti-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  background: #0F172A;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+}
+
+.iti-button:hover {
+  background: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
+}
+
+.iti-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+}
+
+.iti-button:hover .iti-button-icon {
+  transform: scale(1.15) translateX(2px);
+  background: var(--brand-crimson, #D50000);
+}
+
+/* Service Block Number Badge */
+.sec-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brand-crimson, #D50000);
+  background: rgba(213, 0, 0, 0.07);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  margin-right: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .editorial-story-section {
+    padding: 3.5rem 0 5rem;
+  }
+  .iti-drift-banner {
+    padding: 2rem 0 3rem;
+    margin-bottom: 3rem;
+  }
+  .iti-drift-word {
+    font-size: clamp(2.2rem, 9vw, 3.8rem);
+  }
+  .editorial-story-block {
+    padding: 3rem 0;
+  }
+}
