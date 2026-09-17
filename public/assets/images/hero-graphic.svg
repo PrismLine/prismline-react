@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 500" fill="none">
+  <defs>
+    <!-- Light-Mode Enhanced Contrast Shadow & Glow Filters -->
+    <filter id="lightGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#FF3D00" flood-opacity="0.35"/>
+    </filter>
+
+    <filter id="beaconGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="8" flood-color="#FF6D00" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Gradients -->
+    <linearGradient id="vLaserLight" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#FF6D00"/>
+      <stop offset="40%" stop-color="#E52E2D"/>
+      <stop offset="100%" stop-color="#D50000"/>
+    </linearGradient>
+
+    <linearGradient id="triLightStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D00"/>
+      <stop offset="50%" stop-color="#E52E2D"/>
+      <stop offset="100%" stop-color="#B71C1C"/>
+    </linearGradient>
+
+    <linearGradient id="triLightFill" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 77, 0, 0.05)"/>
+      <stop offset="100%" stop-color="rgba(213, 0, 0, 0.16)"/>
+    </linearGradient>
+
+    <linearGradient id="waveTealLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="25%" stop-color="rgba(0, 150, 136, 0.5)"/>
+      <stop offset="60%" stop-color="rgba(0, 188, 212, 0.6)"/>
+      <stop offset="85%" stop-color="rgba(0, 137, 123, 0.45)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <radialGradient id="beaconLightHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF5722" stop-opacity="0.65"/>
+      <stop offset="50%" stop-color="#FF9800" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FF9800" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Wave in Background -->
+  <path d="M 80,310 Q 180,285 270,320 T 450,295" stroke="url(#waveTealLight)" stroke-width="3" fill="none" opacity="0.9"/>
+  <path d="M 95,322 Q 195,297 285,332 T 465,307" stroke="url(#waveTealLight)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.65"/>
+
+  <!-- Inverted Triangle (Inside the V arms) -->
+  <polygon points="210,165 330,165 270,275" fill="url(#triLightFill)" stroke="url(#triLightStroke)" stroke-width="2.5" filter="url(#lightGlow)"/>
+
+  <!-- Secondary Hairline Fan Rays -->
+  <line x1="270" y1="420" x2="105" y2="75" stroke="#FF7043" stroke-width="1.2" opacity="0.8"/>
+  <line x1="270" y1="420" x2="160" y2="210" stroke="#FF8A65" stroke-width="1" opacity="0.7"/>
+
+  <line x1="270" y1="420" x2="435" y2="75" stroke="#FF5722" stroke-width="1.4" opacity="0.85"/>
+  <line x1="270" y1="420" x2="415" y2="108" stroke="#FF9800" stroke-width="1.6" opacity="0.9"/>
+  <line x1="270" y1="420" x2="395" y2="155" stroke="#FFA726" stroke-width="1.2" opacity="0.8"/>
+
+  <!-- Main Left Laser Arm -->
+  <line x1="270" y1="420" x2="125" y2="105" stroke="#E52E2D" stroke-width="3.5" stroke-linecap="round" filter="url(#lightGlow)"/>
+  <line x1="270" y1="420" x2="125" y2="105" stroke="#FFA726" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Main Right Laser Arm -->
+  <line x1="270" y1="420" x2="420" y2="90" stroke="#FF5722" stroke-width="4.2" stroke-linecap="round" filter="url(#lightGlow)"/>
+  <line x1="270" y1="420" x2="420" y2="90" stroke="#FFE082" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Bottom Apex Light Source & Beacon -->
+  <circle cx="270" cy="420" r="48" fill="url(#beaconLightHalo)"/>
+  <rect x="252" y="402" width="36" height="36" rx="6" fill="#FF5722" opacity="0.3" filter="url(#beaconGlow)"/>
+  <circle cx="270" cy="420" r="16" fill="#FF5722" filter="url(#beaconGlow)"/>
+  <circle cx="270" cy="420" r="8" fill="#FFA726"/>
+  <circle cx="270" cy="420" r="4" fill="#FFFFFF"/>
+</svg>
